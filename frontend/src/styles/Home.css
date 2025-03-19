@@ -1,0 +1,227 @@
+/* Task Manager Styling with Bootstrap */
+
+/* Global styles */
+body {
+    background-color: #f8f9fa;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header styling */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: none;
+    flex-wrap: wrap;
+    background-color: #0292f2; /* Added blue background */
+    border-radius: 8px; /* Added rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added subtle shadow */
+}
+
+.app-title {
+    color: white; /* Changed to white for better contrast on blue background */
+    margin: 0;
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+.logout-button {
+    background-color: white;
+    color: #0292f2;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 5px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.logout-button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: white;
+    color: #0292f2;
+}
+
+/* Responsive adjustments for our custom button */
+@media (max-width: 576px) {
+    .logout-button {
+        padding: 4px 10px !important;
+        font-size: 12px !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .logout-button {
+        padding: 3px 8px !important;
+        font-size: 11px !important;
+    }
+}
+
+/* Task list container */
+.task-list {
+    margin-bottom: 2rem;
+}
+
+/* Individual task styling */
+.task-item {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.task-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.task-info {
+    flex: 1;
+    padding-right: 1rem;
+}
+
+/* Update your existing task-actions styles */
+.task-actions {
+    display: flex;
+    flex-direction: column;
+    min-width: 100px;
+    margin-top: 0; /* Override previous margin */
+}
+
+/* For mobile screens, stack content */
+@media (max-width: 576px) {
+    .task {
+        flex-direction: column;
+    }
+
+    .task-info {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .task-actions {
+        width: 100%;
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+
+    .task-actions .btn {
+        width: auto;
+        flex: 1;
+    }
+}
+
+.task-content {
+    margin-bottom: 0.5rem;
+}
+
+.task-date {
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin-bottom: 0;
+}
+
+/* Task editing form */
+.edit-form {
+    background-color: #f1f7fe;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #b8daff;
+}
+
+/* Create task form */
+.create-task-section {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    margin-bottom: 1rem;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    padding: 0.5rem 1.5rem;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+/* Task action buttons */
+.task-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.btn-edit {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #f1f7fe;
+}
+
+.btn-edit:hover {
+    background-color: #ffca2c;
+    border-color: #ffc720;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-delete:hover {
+    background-color: #bb2d3b;
+    border-color: #b02a37;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .task-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Loading and empty states */
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: #6c757d;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #0d6efd;
+}
