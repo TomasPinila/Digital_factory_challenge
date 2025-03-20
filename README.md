@@ -1,6 +1,6 @@
 # Digital Factory Challenge - Task Manager Application
 
-A full-stack task management application built with the MERN stack (MongoDB, Express.js, React, Node.js) that allows users to register, login, and manage their tasks.
+A full-stack task management application built with the MERN stack (MongoDB, Express.js, React, Node.js) that allows users to register, login, and manage their tasks. The application is deployed, click here to see it: https://todo-mern-app-frontend-dsmm.onrender.com
 
 ## Project Structure
 
@@ -15,6 +15,8 @@ Digital_factory_challenge/
 -   [Node.js](https://nodejs.org/) (v16 or newer)
 -   [npm](https://www.npmjs.com/) (v8 or newer)
 -   [MongoDB](https://www.mongodb.com/) account (or local MongoDB installation)
+
+
 
 ## Setup Instructions
 
