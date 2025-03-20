@@ -25,31 +25,36 @@ function Form({ route, method }) {
             if (method === "login") {
                 const res = await api.post(route, { email, password });
                 //console.log("Login response:", res.data);
-                localStorage.setItem(ACCESS_TOKEN, res.data.accessToken);
-                navigate("/");
+                if (res.data && !res.data.error && res.data.accessToken) {
+                    localStorage.setItem(ACCESS_TOKEN, res.data.accessToken);
+                    navigate("/");
+                } else {
+                    // Show error message but don't store token
+                    alert(res.data.message || "Login failed");
+                }
             } else {
-                const res = await api
-                    .post(route, {
+                try {
+                    // Use consistent async/await pattern
+                    const res = await api.post(route, {
                         fullName,
                         email,
                         password,
-                    })
-                    .then((res) => {
-                        console.log("Register response:", res.data);
-                        if (
-                            res.data.error === true &&
-                            res.data.message === "User already exists"
-                        ) {
-                            alert("User already exists");
-                        } else {
-                            alert("Successfully registered");
-                            navigate("/login");
-                        }
-                    })
-                    .catch((err) => {
-                        console.error(err);
-                        alert("An error occurred creating your account");
                     });
+
+                    console.log("Register response:", res.data);
+                    if (
+                        res.data.error === true &&
+                        res.data.message === "User already exists"
+                    ) {
+                        alert("User already exists");
+                    } else {
+                        alert("Successfully registered");
+                        navigate("/login");
+                    }
+                } catch (err) {
+                    // This will be handled by the outer catch block
+                    throw err;
+                }
             }
         } catch (error) {
             if (error.response) {
@@ -90,7 +95,19 @@ function Form({ route, method }) {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
             />
-            {loading && <LoadingIndicator />}
+            {loading && (
+                <div
+                    className="loading-container"
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        width: "100%",
+                        padding: "15px 0", // Added vertical padding for more space
+                    }}
+                >
+                    <LoadingIndicator />
+                </div>
+            )}
             <button className="form-button" type="submit">
                 {name}
             </button>

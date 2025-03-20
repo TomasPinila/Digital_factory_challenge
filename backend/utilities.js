@@ -1,19 +1,30 @@
 const jwt = require("jsonwebtoken");
-
+/**
+ * Middleware to authenticate JWT tokens from request headers
+ * Verifies the token and adds the user payload to the request object
+ *
+ * req - Express request object
+ * res - Express response object
+ * next - Express next middleware function
+ */
 function authenticateToken(req, res, next) {
     const authHeader = req.headers["authorization"];
     const token = authHeader && authHeader.split(" ")[1];
 
     if (!token) {
-        console.log("Token missing");
-        return res.sendStatus(401);
+        return res.status(401).json({
+            error: true,
+            message: "Authentication required",
+        });
     }
     // console.log(token);
 
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         if (err) {
-            console.log("Token verification failed:", err.message);
-            return res.sendStatus(403);
+            return res.status(403).json({
+                error: true,
+                message: "Invalid or expired token",
+            });
         }
         //console.log("Token verified successfully:", user);
 
